@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#MISE description="Start infrastructure services"
+
+docker compose up -d --force-recreate --remove-orphans
+
+echo ""
+echo "🚀 --- INFRASTRUCTURE DASHBOARD ---"
+echo "📊 OpenObserve:   https://observe.apparat-blueprint.test (admin@example.com / password123)"
+echo "📊 RedisInsight:  https://redis.apparat-blueprint.test"
+echo "📊 MinIO:         https://minio.apparat-blueprint.test (local-admin / local-super-secret)"
+echo "🪪 Dex OIDC:      https://dex.apparat-blueprint.test"
+echo "📈 OTel gRPC:     localhost:3417"
+echo "----------------------------------"

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#MISE description="Setup Docker buildx builder (Internal)"
+#MISE hide=true
+
+set -e 
+
+if ! docker buildx inspect apparat-blueprint-builder >/dev/null 2>&1; then
+    echo "🔧 Creating buildx builder 'apparat-blueprint-builder'..."
+    docker buildx create --name apparat-blueprint-builder --use --bootstrap
+else
+    echo "✅ Using existing buildx builder 'apparat-blueprint-builder'"
+    docker buildx use apparat-blueprint-builder
+    docker buildx inspect --bootstrap > /dev/null
+fi

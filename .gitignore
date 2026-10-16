@@ -1,0 +1,23 @@
+bin/
+.zed/
+.vscode/
+dist/
+.DS_Store 
+backend/data/
+backend/cmd/assets/
+backend/.env
+backend/.env.backup.*
+# Keep the committed defaults, ignore per-developer local overrides only.
+frontend/.env.local
+frontend/.env.*.local
+backend/config.yaml
+backend/config.local.yaml
+backend/config/*
+!backend/config/config.yaml
+backend/coverage.*
+backend/_config.*
+backend/exports/*
+backend/tmp
+*.log
+infra/.certs/
+docker-compose.override.yaml

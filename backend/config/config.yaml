@@ -1,0 +1,13 @@
+app:
+  cors_allow_origins: https://apparat-blueprint.test
+  db_filename: apparat-blueprint
+  frontend_url: "https://apparat-blueprint.test"
+  log_format: json
+  log_level: debug
+  version: dev
+sentry:
+  dsn: ""
+  environment: development
+  replay_error_sample_rate: 0.1
+  replay_session_sample_rate: 0.1
+  trace_sample_rate: 0.1

@@ -1,0 +1,32 @@
+issuer: https://dex.apparat-blueprint.test/dex
+storage:
+  type: memory
+web:
+  http: 0.0.0.0:5556
+  allowedOrigins: ['https://apparat-blueprint.test']
+staticClients:
+- id: react-admin-client
+  redirectURIs:
+  - 'https://apparat-blueprint.test/'
+  name: 'Apparat Blueprint Admin'
+  public: true
+
+# ---------------------------------------------------------------------------
+# DEV ONLY — local development identity provider.
+#
+# The static user below is a well-known development default:
+#   login:    admin@example.com
+#   password: password
+#
+# It exists so the OIDC login loop works out of the box after `mise run infra:up`.
+# It is NOT a secret and MUST NOT be reused in any deployed environment.
+# For anything beyond local development, replace `enablePasswordDB` with a real
+# connector (GitHub/Google/LDAP/...) or point `auth.authority` at your own IdP.
+# ---------------------------------------------------------------------------
+enablePasswordDB: true
+staticPasswords:
+- email: "admin@example.com"
+  # bcrypt hash for the password "password"
+  hash: "$2a$10$2b2cU8CPhOTaGrs1HRQuAueS7JTT5ZHsHSzYiFPm1leZck7Mc8T4W"
+  username: "Admin"
+  userID: "08a8684b-db88-4b73-90a9-3cd1661f5466"
