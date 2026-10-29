@@ -57,11 +57,12 @@ Docker image: `mise run docker:build` (buildx builder `apparat-blueprint-builder
 
 ### Do not run `go mod tidy`
 
-`backend/internal/app/deps/deps.go` (build tag `deps`) blank-imports `aws-sdk-go-v2/service/sesv2`
-and `google/uuid` so they are downloaded and kept in `go.sum` for **offline work** even though no
-product code uses them yet. `go mod tidy` respects build tags, so it keeps them as long as the
-file exists — but it _would_ drop every other currently unused dependency in `go.mod` (fake-data
-generation, Markdown rendering/sanitising and feed parsing are all pinned but unreferenced).
+`backend/internal/app/deps/deps.go` (build tag `deps`) blank-imports `aws-sdk-go-v2/service/sesv2`,
+`google/uuid` and `gofakeit/v7` so they are downloaded and kept in `go.sum` for **offline work**
+even though no product code uses them yet. `go mod tidy` respects build tags, so it keeps them as
+long as the file exists — but it _would_ drop every other currently unused dependency in `go.mod`.
+App-specific deps (Markdown rendering/sanitising, feed parsing, S3 client, …) are intentionally
+_not_ pinned; add them to your own project when needed.
 Treat `mise run be:deps:update` as a deliberate, network-requiring act, not a routine step.
 
 ### Config loading order

@@ -11,5 +11,6 @@ package deps
 
 import (
 	_ "github.com/aws/aws-sdk-go-v2/service/sesv2"
+	_ "github.com/brianvoe/gofakeit/v7"
 	_ "github.com/google/uuid"
 )
