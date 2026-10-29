@@ -4,11 +4,7 @@ go 1.27.0
 
 require (
 	github.com/MicahParks/keyfunc/v2 v2.1.0
-	github.com/aws/aws-sdk-go-v2 v1.47.1
-	github.com/aws/aws-sdk-go-v2/config v1.33.6
-	github.com/aws/aws-sdk-go-v2/credentials v1.20.6
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.113.4
-	github.com/brianvoe/gofakeit/v7 v7.17.1
+	github.com/aws/aws-sdk-go-v2/service/sesv2 v1.76.0
 	github.com/getsentry/sentry-go v0.49.0
 	github.com/getsentry/sentry-go/gin v0.49.0
 	github.com/gin-contrib/cors v1.7.9
@@ -18,17 +14,14 @@ require (
 	github.com/go-playground/validator/v10 v10.30.5
 	github.com/go-viper/mapstructure/v2 v2.5.0
 	github.com/golang-jwt/jwt/v5 v5.3.1
-	github.com/gorilla/feeds v1.2.0
+	github.com/google/uuid v1.6.0
 	github.com/joho/godotenv v1.5.1
-	github.com/microcosm-cc/bluemonday v1.0.27
-	github.com/potibm/protokolapparat v1.0.3
 	github.com/redis/go-redis/v9 v9.22.0
 	github.com/samber/slog-gin v1.21.1
 	github.com/samber/slog-multi v1.8.0
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/viper v1.21.0
 	github.com/stretchr/testify v1.12.1
-	github.com/yuin/goldmark v1.8.6
 	go.opentelemetry.io/contrib/bridges/otelslog v0.20.1
 	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.71.0
 	go.opentelemetry.io/contrib/instrumentation/runtime v0.71.0
@@ -44,22 +37,11 @@ require (
 )
 
 require (
-	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.20 // indirect
-	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.20.1 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/configsources v1.5.4 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.8.4 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/v4a v1.5.4 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.19 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.11.5 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.14.4 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.20.4 // indirect
-	github.com/aws/aws-sdk-go-v2/service/sesv2 v1.76.0 // indirect
-	github.com/aws/aws-sdk-go-v2/service/signin v1.10.1 // indirect
-	github.com/aws/aws-sdk-go-v2/service/sso v1.38.1 // indirect
-	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.43.1 // indirect
-	github.com/aws/aws-sdk-go-v2/service/sts v1.51.1 // indirect
-	github.com/aws/smithy-go v1.28.2 // indirect
-	github.com/aymerick/douceur v0.2.0 // indirect
+	github.com/aws/aws-sdk-go-v2 v1.47.4 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.5.7 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.8.7 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/v4a v1.5.7 // indirect
+	github.com/aws/smithy-go v1.28.6 // indirect
 	github.com/bytedance/gopkg v0.1.4 // indirect
 	github.com/bytedance/sonic v1.15.4 // indirect
 	github.com/bytedance/sonic/loader v0.5.2 // indirect
@@ -77,8 +59,6 @@ require (
 	github.com/go-playground/universal-translator v0.18.2 // indirect
 	github.com/goccy/go-json v0.10.6 // indirect
 	github.com/goccy/go-yaml v1.19.2 // indirect
-	github.com/google/uuid v1.6.0 // indirect
-	github.com/gorilla/css v1.0.1 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.30.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
