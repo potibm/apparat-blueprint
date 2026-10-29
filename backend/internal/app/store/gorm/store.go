@@ -14,8 +14,8 @@ type Store struct {
 	db *gorm.DB
 }
 
-// allModels wird per AutoMigrate in die Datenbank übertragen und von PurgeAll
-// wieder entfernt. Hier gehören die GORM-Modelle der Fachlogik rein.
+// allModels is applied to the database via AutoMigrate and dropped again by
+// PurgeAll. The GORM models of the business logic belong here.
 var allModels = []interface{}{}
 
 func NewSqliteStore(filename string) (*Store, error) {

@@ -11,9 +11,9 @@ export const configureOidc = (authority: string, clientId: string) => {
   userManager = new UserManager({
     authority,
     client_id: clientId,
-    // Kein eigener Callback-Pfad: React Admin hängt am Root und verarbeitet den
-    // `?code=`-Parameter auf der Login-Seite selbst. Ein `/auth-callback` würde
-    // ins Leere routen, weil es keine Route dafür gibt.
+    // No dedicated callback route: React Admin mounts at the root and handles
+    // the `?code=` parameter on the login page itself. An `/auth-callback`
+    // path would route nowhere, because no such route exists.
     redirect_uri: globalThis.location.origin + "/",
     post_logout_redirect_uri: `${globalThis.location.origin}/`,
     response_type: "code",
