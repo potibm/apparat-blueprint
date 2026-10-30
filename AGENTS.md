@@ -8,7 +8,7 @@ Compact cheat-sheet for OpenCode. Omit anything an agent could guess from filena
 
 - **Go backend**: `backend/` (module `github.com/potibm/apparat-blueprint`)
 - **React frontend**: `frontend/` (Vite + React Admin + Tailwind v4 + Flowbite React)
-- **Infra**: `docker-compose.yaml` (Traefik, Dex, OpenObserve, OTel collector, Redis, MinIO)
+- **Infra**: `docker-compose.yaml` (Traefik, Dex, OpenObserve, OTel collector, Redis)
 - **Root `go.work`**: points only to `./backend`. Run Go commands from `backend/`.
 
 **This is a template repository: platform only, no business logic.** There is exactly one frontend
@@ -167,7 +167,6 @@ The server serves `/media` and `/style` as static routes from those directories.
 - OpenObserve UI: https://observe.apparat-blueprint.test (admin@example.com / password123)
 - OTel gRPC: localhost:3417, OTel HTTP: localhost:3418
 - Redis: localhost:3451, RedisInsight: https://redis.apparat-blueprint.test
-- MinIO S3 API: localhost:3450, Console: https://minio.apparat-blueprint.test (local-admin / local-super-secret)
 - Dex OIDC: https://dex.apparat-blueprint.test
 
 All of the above credentials are **well-known development defaults hard-coded in

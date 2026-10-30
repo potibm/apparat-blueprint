@@ -16,7 +16,7 @@ produces a Cosign-signed, SBOM-attested container image.
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | **Backend**      | Config layering, CLI (cobra), HTTP server, SQLite store with audit callbacks, RFC 7807 errors, health/config endpoints |
 | **Frontend**     | Vite + React 19 + React Admin + Tailwind v4 + Flowbite React, runtime config via Zod, OIDC login, theming, layout      |
-| **Infra**        | Traefik, Dex, OpenObserve, OTel collector, Redis, RedisInsight, MinIO, local TLS via mkcert                            |
+| **Infra**        | Traefik, Dex, OpenObserve, OTel collector, Redis, RedisInsight, local TLS via mkcert                                   |
 | **Tooling**      | `mise` for tool versions and tasks, Overmind for process supervision, Air for backend hot reload                       |
 | **CI / Release** | Lint, test, Docker build, SonarCloud, semantic-release, Cosign signing, SBOM attestation                               |
 
@@ -43,7 +43,7 @@ and [AGENTS.md](AGENTS.md) for a precise map of where your code goes.
   - [Dex](https://dexidp.io/) (OIDC provider for local development; swap for any IdP in production)
   - [Traefik](https://traefik.io/) (local edge router)
   - [mkcert](https://github.com/FiloSottile/mkcert) & dnsmasq (local TLS & `.test` routing)
-  - [Redis](https://redis.io) and [MinIO](https://min.io) (S3-compatible object storage)
+  - [Redis](https://redis.io)
 - **Observability**
   - [Sentry](https://sentry.io)
   - [OpenTelemetry](https://opentelemetry.io) + [OpenObserve](https://openobserve.ai/)
@@ -69,7 +69,7 @@ mise run deps:install
 # Generates local certificates, configures dnsmasq/resolver, and updates /etc/hosts (Linux)
 mise run infra:prepare
 
-# 4. Start local services (Traefik, Dex, OpenObserve, Redis, MinIO)
+# 4. Start local services (Traefik, Dex, OpenObserve, Redis)
 mise run infra:up
 
 # 5. Start the development server (hot-reload for backend & frontend)
@@ -86,20 +86,19 @@ that `//go:embed assets` requires to compile. It also copies `backend/.env.examp
 
 Once the stack is running, you can access the applications via:
 
-| Service       | URL                                    | Credentials                          |
-| ------------- | -------------------------------------- | ------------------------------------ |
-| Admin UI      | https://apparat-blueprint.test         | — (unless `auth` is enabled)         |
-| Dex           | https://dex.apparat-blueprint.test     | `admin@example.com` / `password`     |
-| OpenObserve   | https://observe.apparat-blueprint.test | `admin@example.com` / `password123`  |
-| RedisInsight  | https://redis.apparat-blueprint.test   | —                                    |
-| MinIO Console | https://minio.apparat-blueprint.test   | `local-admin` / `local-super-secret` |
+| Service      | URL                                    | Credentials                         |
+| ------------ | -------------------------------------- | ----------------------------------- |
+| Admin UI     | https://apparat-blueprint.test         | — (unless `auth` is enabled)        |
+| Dex          | https://dex.apparat-blueprint.test     | `admin@example.com` / `password`    |
+| OpenObserve  | https://observe.apparat-blueprint.test | `admin@example.com` / `password123` |
+| RedisInsight | https://redis.apparat-blueprint.test   | —                                   |
 
 > **These are development defaults, not secrets.** They are hard-coded in `docker-compose.yaml`
 > and `infra/dex-config.yaml` so the stack works immediately after `mise run infra:up`. Replace
 > all of them before using any of this outside local development.
 
 Development ports: frontend `3400`, backend `3401`, OTel gRPC `3417` / HTTP `3418`,
-MinIO `3450`, Redis `3451`.
+Redis `3451`.
 
 ---
 

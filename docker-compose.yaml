@@ -5,7 +5,6 @@
 # secrets. They exist so `mise run infra:up` yields a working stack immediately:
 #
 #   OpenObserve  admin@example.com / password123
-#   MinIO        local-admin      / local-super-secret
 #   Dex          admin@example.com / password   (see infra/dex-config.yaml)
 #
 # Replace every one of them before using any of this outside local development.
@@ -112,38 +111,7 @@ services:
       - "traefik.http.routers.redis-app.tls=true"
       - "traefik.http.services.redis-app.loadbalancer.server.port=5540"
 
-  minio:
-    image: minio/minio:latest
-    container_name: apparat-blueprint_minio
-    ports:
-      - "3450:9000" # S3 API (Needed for Go backend on host)
-    environment:
-      - MINIO_ROOT_USER=local-admin
-      - MINIO_ROOT_PASSWORD=local-super-secret
-    command: server /data --console-address ":9001"
-    volumes:
-      - minio_data:/data
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.minio-app.rule=Host(`minio.apparat-blueprint.test`)"
-      - "traefik.http.routers.minio-app.entrypoints=websecure"
-      - "traefik.http.routers.minio-app.tls=true"
-      - "traefik.http.services.minio-app.loadbalancer.server.port=9001"
-
-  minio-init:
-    image: minio/mc:latest
-    container_name: apparat-blueprint_minio_init
-    depends_on:
-      - minio
-    entrypoint: >
-      /bin/sh -c "
-      until (/usr/bin/mc alias set local_minio http://minio:9000 local-admin local-super-secret) do echo 'Waiting for MinIO...' && sleep 1; done;
-      /usr/bin/mc mb --ignore-existing local_minio/apparat-blueprint;
-      exit 0;
-      "
-
 volumes:
   o2_data:
   redis_data:
   redisinsight_data:
-  minio_data:

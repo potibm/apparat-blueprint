@@ -141,13 +141,6 @@ services:
     labels:
       - "traefik.docker.network=traefik-global"
 
-  minio:
-    networks:
-      - default
-      - traefik-global
-    labels:
-      - "traefik.docker.network=traefik-global"
-
 # 3. Declares the global network for this project
 networks:
   default:
@@ -190,7 +183,7 @@ mkcert -install
 ````
 
 ### A.3 Generate the Certificates
-Navigate to the `certs` directory of your Master-Traefik and generate the certificates for your project. We include a wildcard (`*.`) so that subdomains like `dex.apparat-blueprint.test` or `minio.apparat-blueprint.test` are automatically covered by the same certificate:
+Navigate to the `certs` directory of your Master-Traefik and generate the certificates for your project. We include a wildcard (`*.`) so that subdomains like `dex.apparat-blueprint.test` or `app.apparat-blueprint.test` are automatically covered by the same certificate:
 
 ````bash
 cd ~/Projects/traefik-proxy/certs
